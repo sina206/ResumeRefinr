@@ -8,7 +8,9 @@ function Home() {
   return (
     <>
       <div>
-        <Button variant="contained">Recruiter Mode</Button>
+        <h1 className="text-8xl font-bold text-center text-blue-500">Hello, Tailwind!</h1>
+
+        <Button href="/recruitermode" variant="contained">Recruiter Mode</Button>
       </div>
         
     </>
