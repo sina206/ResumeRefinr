@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";;
-import webgazer from "webgazer";;
+import React, { useEffect, useState } from "react";
+import webgazer from "webgazer";
 import HeatMap from '../components/HeatMap';
 
 const Recruitermode = () => {
   const [eyeCoordinates, setEyeCoordinates] = useState([]);
 
-  useEffect(() => { 
+  useEffect(() => {
     webgazer.setGazeListener((data, timeStamp) => {
-      setEyeCoordinates(prevCoordinates => [...prevCoordinates, data]); // Update eyeCoordinates state
-      console.log(data, timeStamp);
+      if (data && data.x >= window.innerWidth / 4 && data.x <= (window.innerWidth * 3) / 4) {
+        setEyeCoordinates(prevCoordinates => [...prevCoordinates, data]); // Update eyeCoordinates state
+        console.log(data, timeStamp);
+      }
     }).begin();
 
     // Clean up function
@@ -20,10 +22,11 @@ const Recruitermode = () => {
   return (
     <div>
       {eyeCoordinates.length > 0 && eyeCoordinates.map((coordinates, index) => (
-        <HeatMap key={index} x={coordinates ? coordinates.x : 0} y={coordinates ? coordinates.y : 0} />
+        <HeatMap key={index} x={coordinates.x} y={coordinates.y} />
       ))}
-      {/* Render HeatMap with eye coordinates */}
-      Recruitermode
+      <div>
+        <img src="../src/assets/cv_image.png" alt="CV Image" />
+      </div>
     </div>
   );
 };
