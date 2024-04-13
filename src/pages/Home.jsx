@@ -33,7 +33,7 @@ function Home() {
     <>
       <div className="header">
         <h1 className="title">Resume Refiner</h1>
-        <Button variant="contained" className="recruiter-button">Recruiter Mode</Button>
+        <Button href="/recruitermode" variant="contained" className="recruiter-button">Recruiter Mode</Button>
       </div>
       <div className="content">
         <div className="cv-section">
