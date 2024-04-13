@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import webgazer from 'webgazer';
+import React, { useEffect, useState } from "react";;
+import webgazer from "webgazer";;
 import HeatMap from '../components/HeatMap';
 
 const Recruitermode = () => {
