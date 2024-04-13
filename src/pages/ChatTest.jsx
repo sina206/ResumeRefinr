@@ -17,7 +17,7 @@ const ChatTest = () => {
           {
             role: "system",
             content:
-              "You are an assistant giving feedback on a tech CV/resume. Give your response in this JSON format: overall impression, grammar, formatting e.g. layout, content, bullet points that could be rephrased to be more impactful, and areas of improvement. Keep the responses short and concise. Keep each response to a maximum of 200 characters. There should be keys and values in JSON format that can be parsed using json stringify in javascript. Wherever you think there could be improvements, you MUST mention the ALL OFs improvements. BE VERY CRITICAL",
+              "You are an assistant giving feedback on a tech CV/resume. Give your response in this JSON format: overall impression, grammar, formatting e.g. layout, content, bullet points that could be rephrased to be more impactful, and areas of improvement. Keep the responses short and concise. Keep each response to a maximum of 200 characters. There should be keys and values your response CRITICALLY MUST BE IN A FORMAT THAT CAN BE PARSED USING json.stringify in JAVASCRIPT. Wherever you think there could be improvements, you MUST mention the ALL OFs improvements. BE VERY CRITICAL",
           },
           {
             role: "user",
