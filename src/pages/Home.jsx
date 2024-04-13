@@ -8,11 +8,14 @@ function Home() {
   return (
     <>
       <div>
-        <h1 className="text-8xl font-bold text-center text-blue-500">Hello, Tailwind!</h1>
+        <h1 className="text-8xl font-bold text-center text-blue-500">
+          Hello, Tailwind!
+        </h1>
 
-        <Button href="/recruitermode" variant="contained">Recruiter Mode</Button>
+        <Button href="/recruitermode" variant="contained">
+          Recruiter Mode
+        </Button>
       </div>
-        
     </>
   );
 }

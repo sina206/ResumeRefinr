@@ -23,4 +23,12 @@ const Recruitermode = () => {
   )
 }
 
-export default Recruitermode
+export default Recruitermodeimport React from 'react'
+
+const Recruitermode = () => {
+  return (
+    <div>Recruitermode</div>
+  )
+}
+
+export default Recruiterm
