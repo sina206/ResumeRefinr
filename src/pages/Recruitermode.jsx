@@ -1,34 +1,48 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom"; // Import useLocation
 import webgazer from "webgazer";
 import HeatMap from '../components/HeatMap';
 
 const Recruitermode = () => {
-  const [eyeCoordinates, setEyeCoordinates] = useState([]);
+ const location = useLocation(); // Initialize useLocation
+ const cvUrl = location.state?.cvUrl; // Access the cvUrl passed from Home
+ const [eyeCoordinates, setEyeCoordinates] = useState([]);
 
-  useEffect(() => {
+ useEffect(() => { 
+
+  const webgazerInstance =  webgazer.setRegression('ridge') /* currently must set regression and tracker */
+  .setTracker('TFFacemesh')
+  .begin();
+
+    // // Turn off video
+    // webgazerInstance.showVideoPreview(false) /* shows all video previews */
+    //   .showPredictionPoints(false); /* shows a square every 100 milliseconds where current prediction is */
+
+      // Enable smoothing
+    webgazer.applyKalmanFilter(true); // Kalman Filter defaults to on.
+
     webgazer.setGazeListener((data, timeStamp) => {
-      if (data && data.x >= window.innerWidth / 4 && data.x <= (window.innerWidth * 3) / 4) {
-        setEyeCoordinates(prevCoordinates => [...prevCoordinates, data]); // Update eyeCoordinates state
-        console.log(data, timeStamp);
-      }
-    }).begin();
+      setEyeCoordinates(prevCoordinates => [...prevCoordinates, data]); // Update eyeCoordinates state
+      console.log(data, timeStamp);
+    })
 
     // Clean up function
     return () => {
       webgazer.clearGazeListener(); // Cleanup webgazer listener
     };
-  }, []);
+ }, []);
 
-  return (
+ return (
     <div>
       {eyeCoordinates.length > 0 && eyeCoordinates.map((coordinates, index) => (
-        <HeatMap key={index} x={coordinates.x} y={coordinates.y} />
+        <HeatMap key={index} x={coordinates ? coordinates.x : 0} y={coordinates ? coordinates.y : 0} />
       ))}
-      <div>
-        <img src="../src/assets/cv_image.png" alt="CV Image" />
-      </div>
+      {/* Render HeatMap with eye coordinates /}
+      {cvUrl && <iframe src={cvUrl} title="CV" className="cv-pdf" />}
+      {/ Display PDF if cvUrl is present */}
+      Recruitermode
     </div>
-  );
+ );
 };
 
 export default Recruitermode;
