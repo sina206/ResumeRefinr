@@ -3,8 +3,10 @@ import Home from "./pages/Home";
 import UploadButton from "./pages/UploadButton";
 import ChatTest from "./pages/ChatTest";
 import Recruitermode from "./pages/Recruitermode";
+import { useState } from "react";
 
 function App() {
+  const [cvUrl, setCvUrl] = useState("");
   return (
     <Router>
       <main>

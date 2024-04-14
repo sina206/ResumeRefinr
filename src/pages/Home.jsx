@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "@mui/material/Button";
 import "../pages/Home.scss";
 import OpenAI from "openai";
+import ReviewDisplay from "../components/ReviewDisplay";
 
 function Home() {
   const [cvFile, setCvFile] = useState(null);
@@ -128,7 +129,15 @@ function Home() {
                   <li>Node.js</li>
                 </ul>
               </div>
-              {/* Add more CV stats here */}
+              <div>
+                {data.overall_impression ? (
+                  <ReviewDisplay jsonString={JSON.stringify(data)} />
+                ) : data.error ? (
+                  <p>{data.error}</p>
+                ) : (
+                  <p>Upload CV to get a review!!!</p>
+                )}
+              </div>
             </div>
           </div>
         )}
