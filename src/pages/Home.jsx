@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Button from "@mui/material/Button";
-import "../pages/Home.scss";
 
 function Home() {
   const [cvFile, setCvFile] = useState(null);
@@ -31,48 +30,61 @@ function Home() {
 
   return (
     <>
-      <div className="header">
-        <h1 className="title">Resume Refiner</h1>
-        <Button variant="contained" className="recruiter-button">Recruiter Mode</Button>
+      <div className="bg-purple-600 py-4 px-8 flex justify-between items-center">
+        <h1 className="text-white text-3xl font-bold">Resume Refiner</h1>
+        <Button
+          variant="contained"
+          className="bg-white text-purple-600 hover:bg-purple-500 hover:text-white"
+        >
+          Recruiter Mode
+        </Button>
       </div>
-      <div className="content">
-        <div className="cv-section">
-          {cvUrl && (
-            cvFile.type === "application/pdf" ? (
-              <iframe src={cvUrl} title="CV" className="cv-pdf" />
+      <div className="flex justify-center items-start min-h-screen">
+        <div className="w-1/2 p-4 flex justify-center items-center">
+          {cvUrl &&
+            (cvFile.type === "application/pdf" ? (
+              <iframe src={cvUrl} title="CV" className="w-full h-auto" />
             ) : (
-              <img src={cvUrl} alt="CV" className="cv-image" />
-            )
-          )}
+              <img src={cvUrl} alt="CV" className="w-full h-auto" />
+            ))}
           {!cvUrl && (
-            <label htmlFor="cv-upload" className="cv-upload-label">
+            <label
+              htmlFor="cv-upload"
+              className="bg-white text-purple-600 py-2 px-4 rounded-md cursor-pointer"
+            >
               Upload CV
               <input
                 type="file"
                 id="cv-upload"
                 accept=".pdf,.docx,.doc"
                 onChange={handleFileUpload}
-                className="cv-upload-input"
+                className="hidden"
               />
             </label>
           )}
           {cvUrl && (
-            <Button variant="contained" className="new-cv-button" onClick={handleNewCvUpload}>
+            <Button
+              variant="contained"
+              className="bg-purple-600 text-white hover:bg-purple-500"
+              onClick={handleNewCvUpload}
+            >
               Upload New CV
             </Button>
           )}
         </div>
         {cvUrl && (
-          <div className="stats-section">
-            <h2 className="stats-title">CV Stats</h2>
-            <div className="stats-list">
-              <div className="stats-item">
-                <p className="stats-label">Total Experience</p>
-                <p className="stats-value">5 years</p>
+          <div className="w-1/2 p-4">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">CV Stats</h2>
+            <div className="flex flex-col">
+              <div className="mb-4">
+                <p className="text-lg font-semibold text-gray-600">
+                  Total Experience
+                </p>
+                <p className="text-lg font-bold text-gray-800">5 years</p>
               </div>
-              <div className="stats-item">
-                <p className="stats-label">Skills</p>
-                <ul className="skills-list">
+              <div>
+                <p className="text-lg font-semibold text-gray-600">Skills</p>
+                <ul className="list-disc list-inside">
                   <li>JavaScript</li>
                   <li>React</li>
                   <li>Node.js</li>
