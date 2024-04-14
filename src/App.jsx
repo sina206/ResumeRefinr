@@ -3,13 +3,16 @@ import Home from "./pages/Home";
 import UploadButton from "./pages/UploadButton";
 import ChatTest from "./pages/ChatTest";
 import Recruitermode from "./pages/Recruitermode";
+import { useState } from "react";
 
 function App() {
+
+  const [cvUrl,setCvUrl] = useState("")
   return (
     <Router>
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home   />} />
           <Route path="/upload" element={<UploadButton />} />
           <Route path="/ChatTest" element={<ChatTest />} />
           <Route path="/recruitermode" element={<Recruitermode />} />
