@@ -25,7 +25,7 @@ const ChatTest = () => {
               {
                 type: "image_url",
                 image_url: {
-                  url: "https://www.techacademia.co.uk/wp-content/uploads/2024/03/STX-Quant-Trader-CV-V2.png",
+                  url: "",
                 },
               },
             ],
