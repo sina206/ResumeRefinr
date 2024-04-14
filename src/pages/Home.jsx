@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import "../pages/Home.scss";
+import { Link } from "react-router-dom";
 
 function Home() {
   const [headerText, setHeaderText] = useState("");
@@ -77,12 +78,12 @@ function Home() {
             ResumeRefinr
           </p>
           <div className="ml-auto flex items-center gap-2">
-            <button
+            <Link
+              to="/recruitermode"
               className="inline-flex items-center rounded-md bg-gray-100 px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-950/50"
-              href="#"
             >
               Recruiter Mode
-            </button>
+            </Link>
           </div>
         </header>
 
