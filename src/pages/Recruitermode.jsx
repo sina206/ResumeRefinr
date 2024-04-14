@@ -7,8 +7,6 @@ import HeatMap from "../components/HeatMap";
 const Recruitermode = () => {
  const location = useLocation(); // Initialize useLocation
  const cvUrl = location.state?.cvUrl; // Access the cvUrl passed from Home
-  const location = useLocation(); // Initialize useLocation
-  const cvUrl = location.state?.cvUrl; // Access the cvUrl passed from Home
  const [eyeCoordinates, setEyeCoordinates] = useState([]);
 
  useEffect(() => { 
